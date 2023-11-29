@@ -1,0 +1,252 @@
+<h2>Inline-style</h2>
+<app-in-style></app-in-style>
+<app-in-template></app-in-template>
+<app-in-style-temp></app-in-style-temp>
+<hr>
+<h2>Function Call</h2>
+<button (click)="getName()">Click Here</button>
+<br><br>
+<button (click)="getData('hello')">Call Function</button>
+<br><br>
+<hr>
+<h2>Events</h2>
+<input type="text" #box (keyup)= "getData(box.value)" placeholder="Key-up Event">
+<br><br>
+<input type="text" #box1 (keydown)= "getData(box1.value)" placeholder="Key-down Event">
+<br><br>
+<input type="text" #box2 (blur)= "getData(box2.value)" placeholder="blur Event">
+<br><br>
+<input type="text" #box3 (input)= "getData(box3.value)" placeholder="Input Event">
+<br><br>
+<h1 (mouseover)= "getData('over')">Splendid Infosystems</h1>
+<h1 (mouseleave)= "getData('leave')">Infosystems</h1>
+<hr>
+<h2>Input Box:-</h2>
+<input type="text" #box4 (keyup)= "getValue(box4.value)" placeholder="name">
+
+<p>Valule Is: {{displayVal}}</p>
+<br>
+<input type="text" placeholder="name" #box5>
+<button (click)= "getValue(box5.value)">Click Here</button>
+<p>Valule Is: {{displayVal}}</p>
+<!------------Counter--------------->
+<hr>
+<h2>Counter</h2>
+<button (click)= "counter('add')">++</button>
+
+<p>count:- {{count}}</p>
+
+<button (click)= "counter('minus')">--</button>
+<hr>
+<h2>Property Binding vs Interpolation</h2>
+<input type="text" name="user-name" value={{name}} disabled={{disable}} >
+<br><br>
+<input type="text" name="user-name" [value]=name [disabled]=disable >
+<hr>
+<!------------------If-else conditions ---------------------->
+<h2>If-else conditions:</h2>
+<h1 *ngIf="condition; then ifBlock else elseBlock"></h1>
+
+<ng-template #ifBlock>
+    <h1>If Condition</h1>
+</ng-template>
+<ng-template #elseBlock>
+    <h1>Else Condition</h1>
+</ng-template>
+
+<!------------------else If ------------->
+<hr>
+<h2>else-if or multiple conditions:</h2>
+<ng-template [ngIf]="color==='red'">
+    <h1 style="color: red;">Red Color</h1>
+</ng-template>
+<ng-template [ngIf]="color==='green'">
+    <h1 style="color: green;">Green Color</h1>
+</ng-template>
+<ng-template [ngIf]="color==='yellow'">
+    <h1 style="color: yellow;">yellow Color</h1>
+</ng-template>
+
+<!-------------switch-case ----------------->
+<hr>
+<h2>Switch-case</h2>
+<div [ngSwitch]="color1">
+    <h1 *ngSwitchCase="'red'" style="color: red;">Red Color</h1>
+    <h1 *ngSwitchCase="'green'" style="color: green;">green Color</h1>
+    <h1 *ngSwitchCase="'pink'" style="color: pink;">pink Color</h1>
+    <h1 *ngSwitchCase="'blue'" style="color: blue;">blue Color</h1>
+    <h1 *ngSwitchCase="'yellow'" style="color: yellow;">yellow Color</h1>
+    <h1 *ngSwitchCase="'purple'" style="color: purple;">purple Color</h1>
+    <h1 *ngSwitchDefault >UnKnown Color</h1>
+</div>
+
+<!------------------------For Loop----------------------->
+<hr>
+<h2>For Loop</h2>
+<h3 *ngFor="let i of user">{{i}}</h3>
+<h3 *ngFor="let i of userDetails">{{i.name}}---{{i.email}}---{{i.phone}}</h3>
+<!-----------------------Nested Loop -------------------->
+<hr>
+<h2>Nested For loop</h2>
+<ul *ngFor="let i of arr">
+    <li> Name: {{i.name}}</li>
+    <li>Email: {{i.email}}</li>
+    <li>Phone: {{i.phone}}</li>
+    <li>Skills: </li>
+    <ul *ngFor="let skill of i.Skill">
+        <li>{{skill}}</li>
+    </ul>
+
+</ul>
+<!-----------------Style Binding ---------------->
+<hr>
+<h2>Style Binding</h2>
+<h1 [style.color]="h1color" [style.backgroundColor]="bgcolor">Splendid</h1>
+<h1 [style.color]="h1color" [style.backgroundColor]="bgcolor">Infosystems</h1>
+
+<button (click)="updateStyle()">Update Color</button>
+
+<!---------------------------Header ------------------->
+<hr>
+<h2>Header</h2>
+<app-header></app-header>
+<!------------------form ------------------------------>
+<hr>
+<h2>Basic Form</h2>
+<form #basicForm="ngForm" (ngSubmit)="displayData(basicForm.value)">
+    <input type="text" ngModel name="user" placeholder="Enter User Name">
+    <br /><br/>
+    <input type="text" ngModel name="email" placeholder="Enter User Email">
+    <br/><br/>
+    <input type="password" ngModel name="password" placeholder="Enter user password">
+    <br/><br/>
+    <button>Register</button>
+</form>
+<ul>
+    <li>{{userData.user}}</li>
+    <li>{{userData.email}}</li>
+    <li>{{userData.password}}</li>
+
+</ul>
+<!--------------------------------Toggle ---------------------->
+<hr>
+<h2>Toggle</h2>
+<button (click)="toggle()">Submit</button>
+<h1 *ngIf="show">Heading Tag</h1>
+
+<!----------------------- Bootstrap -------------------------->
+<hr>
+<h2>Bootstrap</h2>
+
+<ngb-alert [dismissible]="false">
+	<strong>Warning!</strong> Better check yourself, you're not looking too good.
+</ngb-alert>
+
+<!--------------------- Material UI --------------------->
+<hr>
+<h2>Material UI</h2>
+<mat-slide-toggle>Toggle me!</mat-slide-toggle>
+
+<!---------------------TodoList -------------------------->
+<hr>
+<h2>Todo list</h2>
+<input type="text" placeholder="Enter New Task" #task>
+<br><br>
+<button (click)="addTask(task.value)">Add Task</button>
+<ul *ngFor="let i of todoArr">
+    <li>{{i.name}} <button (click)="RemoveTask(i.id)">Remove</button></li>
+
+</ul>
+<!-----------------Pass data child to Component ------------------>
+<hr>
+<h2>Pass data child to Component</h2>
+<app-child [item]="transferData"></app-child>
+<button (click)="UpdateChild()">Update ChildComponent</button>
+
+<!-----------------Reusable Component ------------------>
+<hr>
+<h2>Reusable Component </h2>
+<ul *ngFor="let data of resueData">
+
+<app-user-details [item]='data'></app-user-details>
+
+</ul>
+
+<!---------------------Send Data child to Parent Component ------------------>
+<hr>
+<h2>Send Data Child To Parent Component</h2>
+<app-child-to-parent (updateDataEvent)="udateData($event) " ></app-child-to-parent>
+
+<!-------------------Two Way Binding ------------------------>
+<hr>
+<h2>Two Way Binding</h2>
+<input type="text" [(ngModel)]="name">   <!--ngModel from import form Module-->
+<h3>{{name}}</h3>
+
+<!----------------------Template Refernce Varibale -------------------->
+<hr>
+<h2>Template Refernce Variable</h2>
+<input type="text" #inputbox>            <!-----#inputbox its id or we can consider as Template refrence-->
+<button (click)="getVal(inputbox.value)">call Function</button>
+
+<!----------------------Basic of Pipes in Angular -------------------->
+<hr>
+<h2>Basic of Pipes in Angular</h2>
+<h3>{{ user_name | uppercase}}</h3>
+<h3>{{ user_name | lowercase}}</h3>
+<h3>{{ today | date}}</h3>
+
+
+<!----------------------Advance of Pipes in Angular -------------------->
+<hr>
+<h2>Advance of Pipes in Angular</h2>
+<h3>{{ user_name}}</h3>
+<h3>{{user_name | slice :1 :6 | uppercase}}</h3>
+<h4>{{user_detail | json | uppercase}}</h4>
+<h4>{{ 50 | currency:'USD'}}</h4>
+<h4>{{ 50 | currency:'INR'}}</h4>
+<h4>{{ 50 | currency:'GBP'}}</h4>
+<!----------------------Custome Pipes in Angular -------------------->
+<hr>
+<h2>Custome Pipes in Angular</h2>
+<h3>{{ 40 | usdInr}}</h3>
+
+<!----------------------form Introduction in Angular -------------------->
+<hr>
+<h2>Form Introduction in Angular</h2>
+
+<!----------------------Template Driven Form -------------------->
+<hr>
+<h2>Template Driven Form</h2>
+<form #loginform="ngForm" (ngSubmit)=userLogin(loginform.value) >
+<input type="text" name="name" placeholder="Enter your Name:" ngModel>
+<br><br>
+<input type="password" name="password" placeholder="Enter your password" ngModel>
+<br><br>
+<button>Submit</button>
+</form>
+
+<!----------------------Reactive Driven Form -------------------->
+<hr>
+<h2>Reactive Driven Form</h2>
+<form [formGroup]="signInForm" (ngSubmit)="signInuser()">
+<input type="text" placeholder="Enter Email:" formControlName="userid">
+<br>
+<span style="color: red;" *ngIf="userid && userid.invalid && userid.touched" >This field IS not valid</span>
+<br>
+<input type="password"  placeholder="Enter password" formControlName="userpass">
+<br>
+<span style="color: red;" *ngIf="userpass && userpass.invalid && userpass.touched" >This field IS not valid</span>
+<br>
+<!-- <input type="number"  placeholder="Enter Phone number" formControlName="phone">
+<br>
+<span style="color: red;" *ngIf="phone && phone.invalid && phone.touched" >This field IS not valid</span>
+<br> -->
+<button [disabled]="signInForm.invalid">Sign In</button>
+
+</form>
+
+<!----------------------Custome Directive-------------------->
+<hr>
+<h2 >Custome Directive-</h2>
+<p appBlueel>Lorem ipsum, dolor Nisi ipsum doloremque deserunt totam dolorem eveniet pariatur sint </p>
