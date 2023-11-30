@@ -1,0 +1,36 @@
+<h1>Group Routing</h1>
+<h3>Admin Pages</h3>
+
+<ul>
+  <li><a routerLink="admin/login">login</a></li>
+  <li><a routerLink="admin/list">list</a></li>
+</ul>
+
+<h3>User Pages</h3>
+
+<ul>
+  <li><a routerLink="user/login">login</a></li>
+  <li><a routerLink="user/list">list</a></li>
+</ul>
+<hr>
+<h1>Lazy Loading</h1>
+
+<h2>Admin1 Page</h2>
+<ul>
+  <li><a routerLink="admin1/login">login</a></li>
+  <li><a routerLink="admin1/list">list</a></li>
+
+</ul>
+
+<h2>User1 Page</h2>
+<ul>
+  <li><a routerLink="user1/login1">login</a></li>
+  <li><a routerLink="user1/list1">list</a></li>
+
+</ul>
+
+<button (click)="loadAdmin()">Load Admin List</button>
+<button (click)="loadUser()">Load User List</button>
+
+
+<router-outlet></router-outlet>
